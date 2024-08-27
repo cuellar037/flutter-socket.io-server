@@ -37,11 +37,21 @@
       console.log('Comunicacion Perdida con el Servidor');
     });
 
+    // socket.emit('mensaje', {nombre: 'Conectado desde el Navegador'});
+
     socket.on('mensaje', function(payload){
-      console.log('Mensaje del Servidor', payload);
+      console.log('Escuchando', payload);
     });
 
-    socket.emit('mensaje', {nombre: 'Alejandro'});
+    socket.on('nuevo-mensaje', function(payload){
+      console.log('Emitir Mensaje', payload);
+    });
+
+    socket.on('active-bands', function(bands){
+      console.clear();
+      console.table(bands);
+    });
+
   </script>
 </body>
 </html>
